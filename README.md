@@ -86,5 +86,5 @@ Ao final do tempo o som que você escolheu vai tocar e a janela aparecerá na te
 ![Final da contagem](docs/end.png)
 
 O som toca em loop até uma decisão ser tomada.
-* O botão da esquerda recomeça o ciclo e começa a contar novamente.
+* O botão da esquerda recomeça o ciclo e conta novamente.
 * O botão da direita exibe a caixa de diálogo para confirmar a saída do programa.
