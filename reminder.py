@@ -331,7 +331,7 @@ class ExitDialog(tk.Toplevel):
 
         #Definir icone no windows
         if os.name == 'nt':
-            root.iconbitmap(bitmap = program_icon)
+            self.iconbitmap(bitmap = program_icon)
 
         if not self.initial_focus:
             self.initial_focus = self
