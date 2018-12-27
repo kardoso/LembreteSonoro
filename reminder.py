@@ -50,7 +50,7 @@ class Application(tk.Frame):
             command = self.setsound,
             anchor = tk.CENTER,
             font = "Times 12 bold",
-            #width = 100,
+            width = 20,
             height = 1,
             #background = "#33B5E5",
             #activebackground = "#33B5E5",
@@ -246,17 +246,92 @@ class Application(tk.Frame):
         #Iniciar "cronometro"
         update_timer(timeinseconds)
 
+class ExitDialog(tk.Toplevel):
+
+    def __init__(self, parent, title = None):
+        tk.Toplevel.__init__(self, parent)
+        self.transient(parent)
+        if title:
+            self.title(title)
+        self.parent = parent
+        self.result = None
+        body = tk.Frame(self)
+        self.initial_focus = self.body(body)
+        body.pack(padx=5, pady=5)
+        self.buttonbox()
+        self.grab_set()
+
+        if not self.initial_focus:
+            self.initial_focus = self
+
+        self.protocol("WM_DELETE_WINDOW", self.cancel)
+
+        self.geometry("+%d+%d" % (parent.winfo_rootx()+50,
+                                  parent.winfo_rooty()+50))
+
+        self.initial_focus.focus_set()
+
+        self.wait_window(self)
+
+    #
+    # construction hooks
+
+    def body(self, master):
+        # Crar corpo do diálogo. Retorna widget
+        # Foco inicial. Método deve ser sobrescrito
+        return tk.Label(master, text="Já vai parar de comentar?").grid(row=0)
+        #pass
+
+    def buttonbox(self):
+        # Addicionar botões padrão
+        box = tk.Frame(self)
+
+        w = tk.Button(box, text="Sim (Enter)", width=10, command=self.ok, default=tk.ACTIVE)
+        w.pack(side=tk.LEFT, padx=5, pady=5)
+        w = tk.Button(box, text="NÃO (Esc)", width=10, command=self.cancel)
+        w.pack(side=tk.LEFT, padx=5, pady=5)
+
+        self.bind("<Return>", self.ok)
+        self.bind("<Escape>", self.cancel)
+
+        box.pack()
+
+    #
+    # Botões padrão
+
+    #Confirmar
+    def ok(self, event=None):
+        if not self.validate():
+            #se o usuário não escolheu nada, mas fez algo
+            self.initial_focus.focus_set() #Focar novamete
+            return
+
+        self.withdraw()
+        self.update_idletasks()
+
+        self.apply()
+
+        self.cancel()
+
+    #Cancelar
+    def cancel(self, event=None):
+        #Focar na janela pai
+        self.master.destroy()
+
+    #
+    # Base dos comandos
+    def validate(self):
+        return 1 # override
+
+    def apply(self):
+        pass # override
+
+
 #Protocolo de saída
 # Quando for fechar o programa executar essa função
 # Essa função exibe uma caixa de diálogo
 def on_closing():
-        d = messagebox.askokcancel("Question","Do you want to quit?")
-        if d == True:
-            ## Destrói a janela
-            ## Fecha o programa
-            root.destroy()
-        #else:
-            #pass
+    ExitDialog(root)
 
 
 # Definir o protoclo de saída
