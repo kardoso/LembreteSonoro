@@ -4,7 +4,7 @@ from tkinter import messagebox # exibir caixa de diálogo
 # Largura da janela
 window_width = 400
 # Altura da janela
-window_height = 300
+window_height = 200
 
 # Criar nova janela principal
 root = tk.Tk()
@@ -17,8 +17,8 @@ centerY = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
 root.geometry("%dx%d" % (window_width, window_height))
 # Centralizar janela
 root.geometry("+%d+%d" % (
-    centerX - (window_width/2), 
-    centerY - (window_height/2)))
+    centerX - (window_width/4), 
+    centerY - (window_height/4)))
 # Não permitir redimensionamento
 root.resizable(False, False)
 
@@ -30,7 +30,83 @@ class Application(tk.Frame):
         super().__init__(master)
         self.master = master
         self.pack()
+        self.create_widgets()
 
+    def create_widgets(self):
+        #Criar o botão para importar arquivos
+        importButton = tk.Button(
+            self,
+            text = "Importar arquivo de áudio",
+            #command = setsound,
+            anchor = tk.CENTER,
+            font = "Times 12 bold",
+            #width = 100,
+            height = 1,
+            #background = "#33B5E5",
+            #activebackground = "#33B5E5",
+            relief = tk.GROOVE,
+            justify="center")
+        #Inserir botão na janela
+        importButton.grid(row=1, column=1, columnspan=2, sticky=tk.E+tk.W)
+        
+        #Variável de texto informando a situação do arquivo
+        #Se foi importado ou não, ou se o arquivo é válido
+        fileResponse = tk.StringVar(value = "Nenhum arquivo selecionado")
+        #Criar label para mostrar a situação do arquivo
+        fResponse = tk.Label(
+            self,
+            text= "Nenhum arquivo selecionado",
+            textvariable = fileResponse,
+            font=("Helvetica",9),
+            foreground = "red")
+        #Inserir label na janela
+        fResponse.grid(row=2, column=1, columnspan=2)
+
+        #Label para informar ao usuário o que fazer
+        periodLabel = tk.Label(
+            self,
+            text = "Informe a periodicidade:",
+            font=("Helvetica 10 bold"),
+            justify="center")
+        #Inserir label na janela
+        periodLabel.grid(row=4, column=1)
+
+        #Variável com o período(tempo do ciclo do programa)
+        period = tk.IntVar(self, value=30)
+        #Input para entrada do dado period
+        enterperiod = tk.Entry(self, textvariable=period, font=("Helvetica 10"), justify='center')
+        #Inserir entry na janela
+        enterperiod.grid(row=4, column=2)
+
+        #Opções de tempo
+        OPTIONS = ["Horas", "Minutos", "Segundos"]
+        #Varíavel com o tipo de tempo, padrão "Minutos"
+        timeType = tk.StringVar(self, value=OPTIONS[1])
+        #Menu dropdown com as opções de tempo
+        timeChooser = tk.OptionMenu(self, timeType, *OPTIONS)
+        #Inserir dropdown na janela
+        timeChooser.grid(row=5, column=2)
+
+        #Botão para iniciar o programa
+        startButton = tk.Button(
+            self,
+            text = "Rodar o programa",
+            #command = run,
+            anchor = tk.CENTER,
+            font = "Times 12 bold",
+            width = 20,
+            height = 1,
+            background = "blue",
+            foreground = "white",
+            activebackground = "white",
+            activeforeground = "blue",
+            relief = tk.GROOVE,
+            justify="center")
+        #Inserir o botão na janela
+        startButton.grid(row=7, column=1, columnspan=2, sticky=tk.E+tk.W)
+        
+        #Configurar as linhas vazias do programa para terem tamanho 30
+        self.grid_rowconfigure([3, 6], minsize=30)
 
 #Protocolo de saída
 # Quando for fechar o programa executar essa função
