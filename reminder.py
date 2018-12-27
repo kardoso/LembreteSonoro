@@ -22,16 +22,17 @@ selected_file = "Aquivo selecionado: " # é contatenado com a path do arquivo
 ask_period = "Informe a periodicidade: "
 #Botão para iniciar o programa
 start_string = "Iniciar"
+#label para pedir para o usuário digitar o que deseja lembrar
+remember_ask = "Quero lembrar de "
 #Label para informar o usuário de lembrar...
+#Vai ser concatenado com a ação que o usuário deseja lembrar
 remember_to = "Se lembre de "
-#O que o usuário deseja lembrar
-what_to_remember = ""
 #Botão para recomeçar o temporizador
 remind_again = "Me avise novamente"
 #Botão para fechar o programa
 stop_reminding = "Para com isso!"
 #Label do diálogo ao encerrar o programa
-dialog_question = "Já vai parar de comentar?"
+dialog_question = "Já vai?"
 #Confirmar o encerramento do programa
 dialog_confirm = "Sim (Enter)"
 #Negar o encerramento do programa
@@ -112,6 +113,26 @@ class Application(tk.Frame):
             foreground = "red")
         #Inserir label na janela
         self.fResponse.grid(row=2, column=1, columnspan=2)
+
+        #Label para perguntar o que o usuário deseja lembrar
+        self.rememberaskLabel = tk.Label(
+            self,
+            text = remember_ask,
+            font=("Helvetica 10 bold"),
+            justify="center")
+        #Inserir label na janela
+        self.rememberaskLabel.grid(row=3, column=1)
+        #O que o usuário deseja lembrar
+        #Vai ser usado para ler o que o usuário digitar
+        self.remember_this = tk.StringVar(self, value="comentar")
+        #O que o usuário deseja lembrar
+        self.rememberEntry = tk.Entry(
+            self,
+            textvariable = self.remember_this,
+            font=("Helvetica 10 bold"),
+            justify="center")
+        #Inserir label na janela
+        self.rememberEntry.grid(row=3, column=2)
 
         #Label para informar ao usuário o que fazer
         self.periodLabel = tk.Label(
@@ -210,7 +231,7 @@ class Application(tk.Frame):
         #Label com a mensagem ao concluir a contagem
         messageLabel = tk.Label(
             self,
-            text=remember_to,
+            text=remember_to+self.remember_this.get(),
             font=("Helvetica 12 bold"),
             fg="#ff7f50")
         
