@@ -52,8 +52,10 @@ class Application(tk.Frame):
             font = "Times 12 bold",
             width = 20,
             height = 1,
-            #background = "#33B5E5",
-            #activebackground = "#33B5E5",
+            background = "#5e4b8b",
+            activebackground = "#5e4b8b",
+            activeforeground="white",
+            foreground = "white",
             relief = tk.GROOVE,
             justify="center")
         #Inserir botão na janela
@@ -107,10 +109,10 @@ class Application(tk.Frame):
             command = self.run,
             anchor = tk.CENTER,
             font = "Times 12 bold",
-            background = "blue",
+            background = "#5e4b8b",
+            activebackground = "#5e4b8b",
             foreground = "white",
-            activebackground = "white",
-            activeforeground = "blue",
+            activeforeground="white",
             relief = tk.GROOVE,
             justify="center")
         #Inserir o botão na janela
@@ -140,7 +142,7 @@ class Application(tk.Frame):
                 self.startButton.config(state=tk.ACTIVE)
             else:
                 self.fileResponse.set("Selecione um arquivo válido")
-                self.fResponse.config(fg="orange")
+                self.fResponse.config(fg="#ff7f50")
                 self.startButton.config(state=tk.DISABLED)
         #Se não foi selecionado nenhum arquivo
         else:
@@ -173,14 +175,14 @@ class Application(tk.Frame):
             self,
             text="Se lembre de ...",
             font=("Helvetica 12 bold"),
-            fg="red")
+            fg="#ff7f50")
         
         #Criar uma label apenas para mostrar o texto
         visualTimer = tk.Label(
             self,
             text="00:00:00",
             font=("Helvetica 24 bold"),
-            fg="black")
+            fg="#5e4b8b")
         #Incluir label no grid
         visualTimer.grid(row=3, column=1, columnspan=2, sticky=tk.E+tk.W)
         
@@ -215,7 +217,7 @@ class Application(tk.Frame):
                 #Reproduzir o som
                 self.playsound()
                 #Alterar a cor do visualTimer(cronometro) para vermelho
-                visualTimer.config(fg="red")
+                visualTimer.config(fg="#ff7f50")
                 #Incluir mensagem no grid no grid
                 messageLabel.grid(row=2, column=1, columnspan=2, sticky=tk.E+tk.W)
                 #Criar um botão para resetar "cronometro"
@@ -226,6 +228,10 @@ class Application(tk.Frame):
                     anchor = tk.CENTER,
                     font = "Times 12 bold",
                     height = 1,
+                    background = "#5e4b8b",
+                    activebackground = "#5e4b8b",
+                    activeforeground="white",
+                    foreground = "white",
                     relief = tk.GROOVE,
                     justify="center")
                 #Inserir botão na janela
@@ -237,6 +243,10 @@ class Application(tk.Frame):
                     command = on_closing,
                     anchor = tk.CENTER,
                     font = "Times 12 bold",
+                    background = "#ff7f50",
+                    activebackground = "#ff7f50",
+                    activeforeground="white",
+                    foreground = "white",
                     height = 1,
                     relief = tk.GROOVE,
                     justify="center")
@@ -286,9 +296,26 @@ class ExitDialog(tk.Toplevel):
         # Addicionar botões padrão
         box = tk.Frame(self)
 
-        w = tk.Button(box, text="Sim (Enter)", width=10, command=self.ok, default=tk.ACTIVE)
+        w = tk.Button(
+            box, 
+            text="Sim (Enter)",
+            width=10, 
+            background = "#ff7f50",
+            activebackground = "#ff7f50",
+            activeforeground="white",
+            foreground = "white",
+            command=self.ok, 
+            default=tk.ACTIVE)
         w.pack(side=tk.LEFT, padx=5, pady=5)
-        w = tk.Button(box, text="NÃO (Esc)", width=10, command=self.cancel)
+        w = tk.Button(
+            box, 
+            text="NÃO (Esc)", 
+            width=10, 
+            background = "#5e4b8b",
+            activebackground = "#5e4b8b",
+            activeforeground="white",
+            foreground = "white",
+            command=self.cancel)
         w.pack(side=tk.LEFT, padx=5, pady=5)
 
         self.bind("<Return>", self.ok)
