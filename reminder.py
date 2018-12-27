@@ -337,13 +337,15 @@ class ExitDialog(tk.Toplevel):
         self.update_idletasks()
 
         self.apply()
-
-        self.cancel()
+        
+        #Sair do programa se confirmar
+        self.master.destroy()
 
     #Cancelar
     def cancel(self, event=None):
+        #Focar janela atual se cancelar
         #Focar na janela pai
-        self.master.destroy()
+        self.destroy()
 
     #
     # Base dos comandos
