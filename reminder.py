@@ -7,6 +7,36 @@ from tkinter import filedialog # para procurar/selecionar arquivo
 import winsound # para reproduzir o som (no windows)
 from datetime import timedelta # para converter segundos para o formato HH:MM:SS
 
+##Variáveis das strings no programa
+#Botão para importar áudio
+import_audio = "Importar arquivo de áudio"
+#Título da janela que abre para selecionar arquivo de audio
+dialog_audio = "Selecione o áudio"
+#Label quando nada é selecionado
+none_selected = "Nenhum arquivo selecionado"
+#Label quando um arquivo inválido é selecionado
+invalid_file = "Selecione um arquivo válido"
+#Label quando um arquivo válido é selecionado
+selected_file = "Aquivo selecionado: " # é contatenado com a path do arquivo
+#Label perdindo para informar o tempo do ciclo
+ask_period = "Informe a periodicidade: "
+#Botão para iniciar o programa
+start_string = "Iniciar"
+#Label para informar o usuário de lembrar...
+remember_to = "Se lembre de "
+#O que o usuário deseja lembrar
+what_to_remember = ""
+#Botão para recomeçar o temporizador
+remind_again = "Me avise novamente"
+#Botão para fechar o programa
+stop_reminding = "Para com isso!"
+#Label do diálogo ao encerrar o programa
+dialog_question = "Já vai parar de comentar?"
+#Confirmar o encerramento do programa
+dialog_confirm = "Sim (Enter)"
+#Negar o encerramento do programa
+dialog_cancel = "NÃO (Esc)"
+
 # Largura da janela
 window_width = 400
 # Altura da janela
@@ -53,7 +83,7 @@ class Application(tk.Frame):
         #Criar o botão para importar arquivos
         self.importButton = tk.Button(
             self,
-            text = "Importar arquivo de áudio",
+            text = import_audio,
             command = self.setsound,
             anchor = tk.CENTER,
             font = "Times 12 bold",
@@ -76,7 +106,7 @@ class Application(tk.Frame):
         #Criar label para mostrar a situação do arquivo
         self.fResponse = tk.Label(
             self,
-            text= "Nenhum arquivo selecionado",
+            text= none_selected,
             textvariable = self.fileResponse,
             font=("Helvetica",9),
             foreground = "red")
@@ -86,7 +116,7 @@ class Application(tk.Frame):
         #Label para informar ao usuário o que fazer
         self.periodLabel = tk.Label(
             self,
-            text = "Informe a periodicidade:",
+            text = ask_period,
             font=("Helvetica 10 bold"),
             justify="center")
         #Inserir label na janela
@@ -111,7 +141,7 @@ class Application(tk.Frame):
         #Botão para iniciar o programa
         self.startButton = tk.Button(
             self,
-            text = "Iniciar",
+            text = start_string,
             state = tk.DISABLED,
             command = self.run,
             anchor = tk.CENTER,
@@ -134,7 +164,7 @@ class Application(tk.Frame):
         fpath = filedialog.askopenfile(
             #Iniciar o diretório em que o programa está
             initialdir = os.path.dirname(os.path.abspath(__file__)),
-            title="Selecione o áudio",
+            title= dialog_audio,
             filetypes=(("Arquivos .wav","*.wav"),
                 ("all files","*.*"))
             )
@@ -144,16 +174,16 @@ class Application(tk.Frame):
             #winsound reproduz apenas arquivos .wav
             if fpath.name.endswith('.wav'):
                 self.soundpath = fpath.name
-                self.fileResponse.set("Aquivo selecionado: "+str(fpath.name))
+                self.fileResponse.set(selected_file+str(fpath.name))
                 self.fResponse.config(fg="green")
                 self.startButton.config(state=tk.ACTIVE)
             else:
-                self.fileResponse.set("Selecione um arquivo válido")
+                self.fileResponse.set(invalid_file)
                 self.fResponse.config(fg="#ff7f50")
                 self.startButton.config(state=tk.DISABLED)
         #Se não foi selecionado nenhum arquivo
         else:
-            self.fileResponse.set("Nenhum arquivo selecionado")
+            self.fileResponse.set(none_selected)
             self.fResponse.config(fg="red")
             self.startButton.config(state=tk.DISABLED)
 
@@ -180,7 +210,7 @@ class Application(tk.Frame):
         #Label com a mensagem ao concluir a contagem
         messageLabel = tk.Label(
             self,
-            text="Se lembre de ...",
+            text=remember_to,
             font=("Helvetica 12 bold"),
             fg="#ff7f50")
         
@@ -230,7 +260,7 @@ class Application(tk.Frame):
                 #Criar um botão para resetar "cronometro"
                 self.resetButton = tk.Button(
                     self,
-                    text = "Me avise novamente",
+                    text = remind_again,
                     command = self.run,
                     anchor = tk.CENTER,
                     font = "Times 12 bold",
@@ -246,7 +276,7 @@ class Application(tk.Frame):
                 #Criar um botão para sair do programa
                 self.exitButton = tk.Button(
                     self,
-                    text = "Para com isso!",
+                    text = stop_reminding,
                     command = on_closing,
                     anchor = tk.CENTER,
                     font = "Times 12 bold",
@@ -300,7 +330,7 @@ class ExitDialog(tk.Toplevel):
     def body(self, master):
         # Crar corpo do diálogo. Retorna widget
         # Foco inicial. Método deve ser sobrescrito
-        return tk.Label(master, text="Já vai parar de comentar?").grid(row=0)
+        return tk.Label(master, text=dialog_question).grid(row=0)
         #pass
 
     def buttonbox(self):
@@ -309,7 +339,7 @@ class ExitDialog(tk.Toplevel):
 
         w = tk.Button(
             box, 
-            text="Sim (Enter)",
+            text=dialog_confirm,
             width=10, 
             background = "#ff7f50",
             activebackground = "#ff7f50",
@@ -320,7 +350,7 @@ class ExitDialog(tk.Toplevel):
         w.pack(side=tk.LEFT, padx=5, pady=5)
         w = tk.Button(
             box, 
-            text="NÃO (Esc)", 
+            text=dialog_cancel, 
             width=10, 
             background = "#5e4b8b",
             activebackground = "#5e4b8b",
