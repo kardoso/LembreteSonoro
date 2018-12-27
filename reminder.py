@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import os # usado para pegar diretório em que o programa está
 import tkinter as tk # módulo tkinter para exibir janelas
 from tkinter import messagebox # para exibir caixa de diálogo
@@ -9,6 +11,9 @@ from datetime import timedelta # para converter segundos para o formato HH:MM:SS
 window_width = 400
 # Altura da janela
 window_height = 200
+
+#Variável com o path do icone do programa
+program_icon = "res/reminder.ico"
 
 # Criar nova janela principal
 root = tk.Tk()
@@ -25,7 +30,9 @@ root.geometry("+%d+%d" % (
     centerY - (window_height/4)))
 # Não permitir redimensionamento
 root.resizable(False, False)
-
+#Definir icone do programa no windows
+if os.name == 'nt':
+    root.iconbitmap(bitmap = program_icon)
 
 #Classe principal do programa
 class Application(tk.Frame):
@@ -270,6 +277,10 @@ class ExitDialog(tk.Toplevel):
         body.pack(padx=5, pady=5)
         self.buttonbox()
         self.grab_set()
+
+        #Definir icone no windows
+        if os.name == 'nt':
+            root.iconbitmap(bitmap = program_icon)
 
         if not self.initial_focus:
             self.initial_focus = self
