@@ -1,4 +1,7 @@
 # Lembrete Sonoro
+
+![Lembrete Sonoro](docs/LembreteSonoro_icon.png)
+
 Um programa para te lembrar de fazer algo reproduzindo um áudio de sua escolha em ciclos.
 
 Se você não está aqui pelo código pule para a sessão de [como usar](#Como-usar).
