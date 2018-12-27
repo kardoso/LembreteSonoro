@@ -10,5 +10,4 @@ move "Lembrete Sonoro.exe" "Lembrete Sonoro"
 cd ..
 rd /s /q  __pycache__
 rd /s /q build
-rd dist
 del "Lembrete Sonoro.spec"
