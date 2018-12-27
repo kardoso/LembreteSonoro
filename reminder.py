@@ -49,7 +49,7 @@ program_icon = "res/reminder.ico"
 # Criar nova janela principal
 root = tk.Tk()
 # Definir título da janela
-root.title("Reminder")
+root.title("Lembrete Sonoro")
 # Pontos do centro da tela
 centerX = (root.winfo_screenwidth() - root.winfo_reqwidth()) / 2
 centerY = (root.winfo_screenheight() - root.winfo_reqheight()) / 2
