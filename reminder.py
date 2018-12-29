@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+#    -*- coding: utf-8 -*-
 
 # usado para pegar diretório em que o programa está
 import os
@@ -152,12 +153,16 @@ class Application(tk.Frame):
         # Inserir label na janela
         self.periodLabel.grid(row=4, column=1)
 
+        command = (self.register(self.validate_int),
+                   '%d', '%i', '%P', '%s', '%S', '%v', '%V', '%W')
         # Variável com o período(tempo do ciclo do programa)
         self.period = tk.IntVar(self, value=30)
         # Input para entrada do dado period
         self.enterperiod = tk.Entry(
             self,
             textvariable=self.period,
+            validate='key',
+            validatecommand=command,
             font=("Helvetica 10"),
             justify='center')
         # Inserir entry na janela
@@ -232,6 +237,22 @@ class Application(tk.Frame):
     # Parar de reproduzir som
     def stopsound(self):
         winsound.PlaySound(None, winsound.SND_ALIAS)
+
+    # Validar valor da Entry periodo
+    def validate_int(self, action, index, value_if_allowed,
+                     prior_value, text, validation_type,
+                     trigger_type, widget_name):
+        if(action == '1'):
+            if text in '0123456789':
+                try:
+                    int(value_if_allowed)
+                    return True
+                except ValueError:
+                    return False
+            else:
+                return False
+        else:
+            return True
 
     # Iniciar ciclo do programa
     def run(self):
