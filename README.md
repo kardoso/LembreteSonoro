@@ -1,10 +1,9 @@
-# Lembrete Sonoro
+# Lembrete Sonoro [![CodeFactor](https://www.codefactor.io/repository/github/kardoso/lembretesonoro/badge)](https://www.codefactor.io/repository/github/kardoso/lembretesonoro) [![GitHub version](https://badge.fury.io/gh/kardoso%2FLembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/releases) [![](https://img.shields.io/badge/python-3.7.1-blue.svg)](https://www.python.org/downloads/release/python-371/) [![](https://img.shields.io/github/license/kardoso/LembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/blob/master/LICENSE)
+
 
 ![Lembrete Sonoro](docs/LembreteSonoro_icon.png)
 
 Um programa para te lembrar de fazer algo reproduzindo um áudio de sua escolha em ciclos.
-
-Se você não está aqui pelo código pule para a sessão de [como usar](#Como-usar).
 
 ### Tópicos
 * [Requerimentos](#requerimentos)
@@ -12,6 +11,8 @@ Se você não está aqui pelo código pule para a sessão de [como usar](#Como-u
 * [Personalizar](#Personalizar)
 
 * [Montar o executável](#Montar-o-executável)
+
+* [Download](#Download)
 
 * [Como usar](#Como-usar)
 
@@ -64,15 +65,16 @@ Para simplificar, há um arquivo batch com os comandos necessários.
 Execute o arquivo de lotes `build.bat` no windows.<br>
 É necessário ter o pyinstaller instalado, pois ele é quem vai criar o executável.
 
-Isso vai criar a pasta `Lembrete Sonoro` com o programa dentro do diretório atual.
+Isso vai criar a pasta `Lembrete Sonoro` com o programa dentro do diretório atual.<br>
 _Durante a build outras pastas são criadas, porém o arquivo `build.bat` as move para a lixeira._
 
 
-## Como usar
-Se você não veio aqui pelo código, mas sim pelo programa
-volta lá no topo da página e clica em um botão verde com o texto "Clone or Download" e depois em "Download ZIP".<br>
-O programa vai estar dentro da pasta `Lembrete Sonoro`.
+## Download
+Clique [aqui](https://github.com/kardoso/LembreteSonoro/releases/download/v0.1.0/LembreteSonoro.zip) para fazer o download.
 
+A pasta `res` deve ser mantida na mesma pasta em que o executável está, pois sem ela o programa não será executado.
+
+## Como usar
 Este é o programa:
 
 ![Inicial](docs/initial.png)
@@ -89,4 +91,6 @@ Ao final do tempo o som que você escolheu vai tocar e a janela aparecerá na te
 
 O som toca em loop até uma decisão ser tomada.
 * O botão da esquerda recomeça o ciclo e conta novamente.
-* O botão da direita exibe a caixa de diálogo para confirmar a saída do programa.
+* O botão da direita fecha o programa(exibindo uma caixa de diálogo para confirmar a saída do programa).
+
+
