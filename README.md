@@ -31,7 +31,8 @@ Para instalar o Tkinter utilize os dois comandos seguintes:<br>
 Também já está incluso nas distribuições do Python, basta importar.
 
 * [pyinstaller](https://pyinstaller.readthedocs.io/en/stable/)(Caso queira fazer a build do programa) - 
-Um dos muitos programas que compila programas Python em executáveis stand-alone.
+Um dos muitos programas que compila programas Python em executáveis stand-alone.<br>
+Pode ser instalado com o comando `pip install pyinstaller`
 
 
 ## Personalizar
