@@ -61,10 +61,11 @@ Simples, não?
 ## Montar o executável
 Para simplificar, há um arquivo batch com os comandos necessários.
 
-Execute o arquivo de lotes `setup.bat` no windows.<br>
+Execute o arquivo de lotes `build.bat` no windows.<br>
 É necessário ter o pyinstaller instalado, pois ele é quem vai criar o executável.
 
-Isso vai criar a pasta `Lembrete Sonoro` com o programa dentro da pasta `dist`.
+Isso vai criar a pasta `Lembrete Sonoro` com o programa dentro do diretório atual.
+_Durante a build outras pastas são criadas, porém o arquivo `build.bat` as move para a lixeira._
 
 
 ## Como usar
