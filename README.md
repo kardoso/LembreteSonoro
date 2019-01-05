@@ -1,4 +1,4 @@
-# Lembrete Sonoro [![CodeFactor](https://www.codefactor.io/repository/github/kardoso/lembretesonoro/badge)](https://www.codefactor.io/repository/github/kardoso/lembretesonoro) [![GitHub version](https://badge.fury.io/gh/kardoso%2FLembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/releases) [![](https://img.shields.io/badge/python-3.7.1-blue.svg)](https://www.python.org/downloads/release/python-371/) [![](https://img.shields.io/github/license/kardoso/LembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/blob/master/LICENSE)
+# Lembrete Sonoro [![CodeFactor](https://www.codefactor.io/repository/github/kardoso/lembretesonoro/badge)](https://www.codefactor.io/repository/github/kardoso/lembretesonoro) [![GitHub version](	https://img.shields.io/github/release/kardoso/LembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/releases) [![](https://img.shields.io/badge/python-3.7.1-blue.svg)](https://www.python.org/downloads/release/python-371/) [![](https://img.shields.io/github/license/kardoso/LembreteSonoro.svg)](https://github.com/kardoso/LembreteSonoro/blob/master/LICENSE)
 
 
 ![Lembrete Sonoro](docs/LembreteSonoro_icon.png)
